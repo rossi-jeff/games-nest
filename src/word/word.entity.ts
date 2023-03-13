@@ -1,7 +1,7 @@
 import { Column, Entity } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
 
-@Entity()
+@Entity('words')
 export class Word extends BaseModel {
   @Column()
   Word: string;
