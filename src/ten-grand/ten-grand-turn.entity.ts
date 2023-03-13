@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
+import { TenGrandScore } from './ten-grand-score.entity';
 import { TenGrand } from './ten-grand.entity';
 
 @Entity()
@@ -13,4 +14,7 @@ export class TenGrandTurn extends BaseModel {
   @ManyToOne((type) => TenGrand)
   @JoinColumn({ name: 'ten_grand_id' })
   ten_grand: TenGrand;
+
+  @OneToMany((type) => TenGrandScore, (tgs) => tgs.ten_grand_turn)
+  scores: TenGrandScore[];
 }

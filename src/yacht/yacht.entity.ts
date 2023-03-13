@@ -1,16 +1,15 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
-import { GameStatus } from '../global/enum/game-status.enum';
 import { User } from '../user/user.entity';
-import { TenGrandTurn } from './ten-grand-turn.entity';
+import { YachtTurn } from './yacht-turn.entity';
 
 @Entity()
-export class TenGrand extends BaseModel {
-  @Column({ type: 'enum', enum: GameStatus })
-  Status: GameStatus;
+export class Yacht extends BaseModel {
+  @Column({ type: 'int', default: 0 })
+  Total: number;
 
   @Column({ type: 'int', default: 0 })
-  Score: number;
+  NumTurns: number;
 
   @Column({ type: 'bigint', nullable: true })
   user_id: number;
@@ -19,6 +18,6 @@ export class TenGrand extends BaseModel {
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @OneToMany((type) => TenGrandTurn, (tgt) => tgt.ten_grand)
-  turns: TenGrandTurn[];
+  @OneToMany((type) => YachtTurn, (yt) => yt.yacht)
+  turns: YachtTurn[];
 }

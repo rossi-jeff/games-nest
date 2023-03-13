@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { WordModule } from './word/word.module';
 import { UserModule } from './user/user.module';
 import { GuessWordModule } from './guess-word/guess-word.module';
@@ -11,10 +9,26 @@ import { HangManModule } from './hang-man/hang-man.module';
 import { KlondikeModule } from './klondike/klondike.module';
 import { SeaBattleModule } from './sea-battle/sea-battle.module';
 import { TenGrandModule } from './ten-grand/ten-grand.module';
+import { YachtModule } from './yacht/yacht.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
+import DatabaseConfig from './database.config';
 
 @Module({
-  imports: [WordModule, UserModule, GuessWordModule, CodeBreakerModule, ConcentrationModule, FreeCellModule, HangManModule, KlondikeModule, SeaBattleModule, TenGrandModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot(DatabaseConfig()),
+    WordModule,
+    UserModule,
+    GuessWordModule,
+    CodeBreakerModule,
+    ConcentrationModule,
+    FreeCellModule,
+    HangManModule,
+    KlondikeModule,
+    SeaBattleModule,
+    TenGrandModule,
+    YachtModule,
+  ],
 })
 export class AppModule {}
