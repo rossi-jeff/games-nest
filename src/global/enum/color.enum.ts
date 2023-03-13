@@ -9,3 +9,15 @@ export enum Color {
   White = 7,
   Yellow = 8,
 }
+
+export const ColorArray = [
+  'Black',
+  'Blue',
+  'Brown',
+  'Green',
+  'Orange',
+  'Purple',
+  'Red',
+  'White',
+  'Yellow',
+];

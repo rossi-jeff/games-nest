@@ -5,7 +5,7 @@ import { User } from '../user/user.entity';
 import { CodeBreakerCode } from './code-breaker-code.entity';
 import { CodeBreakerGuess } from './code-breaker-guess.entity';
 
-@Entity()
+@Entity('code_breakers')
 export class CodeBreaker extends BaseModel {
   @Column({ type: 'enum', enum: GameStatus })
   Status: GameStatus;
