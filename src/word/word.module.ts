@@ -4,6 +4,6 @@ import { WordController } from './word.controller';
 
 @Module({
   providers: [WordService],
-  controllers: [WordController]
+  controllers: [WordController],
 })
 export class WordModule {}
