@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
-import { GameStatus } from '../global/enum/game-status.enum';
+import { GameStatus, GameStatusArray } from '../global/enum/game-status.enum';
 import { User } from '../user/user.entity';
 
-@Entity()
+@Entity('free_cells')
 export class FreeCell extends BaseModel {
   @Column({ type: 'enum', enum: GameStatus })
   Status: GameStatus;
@@ -20,4 +20,11 @@ export class FreeCell extends BaseModel {
   @ManyToOne((type) => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
+
+  toJSON() {
+    return {
+      ...this,
+      Status: GameStatusArray[this.Status],
+    };
+  }
 }
