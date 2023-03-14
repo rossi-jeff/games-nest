@@ -3,4 +3,4 @@ export enum Key {
   White = 1,
 }
 
-export const KeyArray = ['Black', 'White'];
+export const KeyArray = Object.keys(Key).filter((k) => isNaN(parseInt(k)));

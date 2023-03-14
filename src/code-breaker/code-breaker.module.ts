@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../user/user.entity';
 import { CodeBreakerCode } from './code-breaker-code.entity';
 import { CodeBreakerGuessColor } from './code-breaker-guess-color.entity';
-import { CodeBreakerGuesskey } from './code-breaker-guess-key.entity';
+import { CodeBreakerGuessKey } from './code-breaker-guess-key.entity';
 import { CodeBreakerGuess } from './code-breaker-guess.entity';
 import { CodeBreaker } from './code-breaker.entity';
 import { CodeBreakerService } from './code-breaker.service';
@@ -16,7 +16,7 @@ import { CodeBreakerController } from './code-breaker.controller';
       CodeBreakerCode,
       CodeBreakerGuess,
       CodeBreakerGuessColor,
-      CodeBreakerGuesskey,
+      CodeBreakerGuessKey,
       User,
     ]),
   ],

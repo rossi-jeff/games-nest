@@ -8,6 +8,7 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
+import { CodeBreakerGuessDto } from '../global/dto/code-breaker-guess.dto';
 import { CreateCodeBreakerDto } from '../global/dto/create-code-breaker.dto';
 import { OptionalAuthGuard } from '../global/optional-auth-guard';
 import { CodeBreakerService } from './code-breaker.service';
@@ -38,5 +39,13 @@ export class CodeBreakerController {
   @UseGuards(OptionalAuthGuard)
   async createCodeBreaker(@Body() dto: CreateCodeBreakerDto, @Req() req: any) {
     return await this.codeBreakerService.createCodeBreaker(dto, req.user.id);
+  }
+
+  @Post(':id/guess')
+  async codeBreakerGuess(
+    @Body() dto: CodeBreakerGuessDto,
+    @Param('id') id: string,
+  ) {
+    return await this.codeBreakerService.codeBreakerGuess(dto, parseInt(id));
   }
 }

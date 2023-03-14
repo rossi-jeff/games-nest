@@ -4,7 +4,7 @@ import { Key, KeyArray } from '../global/enum/key.enum';
 import { CodeBreakerGuess } from './code-breaker-guess.entity';
 
 @Entity('code_breaker_guess_keys')
-export class CodeBreakerGuesskey extends BaseModel {
+export class CodeBreakerGuessKey extends BaseModel {
   @Column({ type: 'enum', enum: Key })
   Key: Key;
 
