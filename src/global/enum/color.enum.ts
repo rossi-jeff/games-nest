@@ -9,3 +9,5 @@ export enum Color {
   White = 7,
   Yellow = 8,
 }
+
+export const ColorArray = Object.keys(Color).filter((k) => isNaN(parseInt(k)));

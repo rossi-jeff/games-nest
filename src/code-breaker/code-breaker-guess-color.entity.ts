@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
-import { Color } from '../global/enum/color.enum';
+import { Color, ColorArray } from '../global/enum/color.enum';
 import { CodeBreakerGuess } from './code-breaker-guess.entity';
 
-@Entity()
+@Entity('code_breaker_guess_colors')
 export class CodeBreakerGuessColor extends BaseModel {
   @Column({ type: 'enum', enum: Color })
   Color: Color;
@@ -14,4 +14,11 @@ export class CodeBreakerGuessColor extends BaseModel {
   @ManyToOne((type) => CodeBreakerGuess)
   @JoinColumn({ name: 'code_breaker_guess_id' })
   code_breaker_guess: CodeBreakerGuess;
+
+  toJSON() {
+    return {
+      ...this,
+      Color: ColorArray[this.Color],
+    };
+  }
 }
