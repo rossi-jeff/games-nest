@@ -3,7 +3,7 @@ import { BaseModel } from '../global/base-model.abstract';
 import { GuessWordGuessRating } from './guess-word-guess-rating.entity';
 import { GuessWord } from './guess-word.entity';
 
-@Entity()
+@Entity('guess_word_guesses')
 export class GuessWordGuess extends BaseModel {
   @Column()
   Guess: string;

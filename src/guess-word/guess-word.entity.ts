@@ -1,11 +1,11 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
-import { GameStatus } from '../global/enum/game-status.enum';
+import { GameStatus, GameStatusArray } from '../global/enum/game-status.enum';
 import { User } from '../user/user.entity';
 import { Word } from '../word/word.entity';
 import { GuessWordGuess } from './guess-word-guess.entity';
 
-@Entity()
+@Entity('guess_words')
 export class GuessWord extends BaseModel {
   @Column({ type: 'enum', enum: GameStatus })
   Status: GameStatus;
@@ -29,4 +29,11 @@ export class GuessWord extends BaseModel {
 
   @OneToMany((type) => GuessWordGuess, (gwg) => gwg.guess_word)
   guesses: GuessWordGuess[];
+
+  toJSON() {
+    return {
+      ...this,
+      Status: GameStatusArray[this.Status],
+    };
+  }
 }
