@@ -1,10 +1,10 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
-import { GameStatus } from '../global/enum/game-status.enum';
+import { GameStatus, GameStatusArray } from '../global/enum/game-status.enum';
 import { User } from '../user/user.entity';
 import { Word } from '../word/word.entity';
 
-@Entity()
+@Entity('hang_men')
 export class HangMan extends BaseModel {
   @Column()
   Correct: string;
@@ -31,4 +31,11 @@ export class HangMan extends BaseModel {
   @ManyToOne((type) => Word)
   @JoinColumn({ name: 'word_id' })
   word: Word;
+
+  toJSON() {
+    return {
+      ...this,
+      Status: GameStatusArray[this.Status],
+    };
+  }
 }
