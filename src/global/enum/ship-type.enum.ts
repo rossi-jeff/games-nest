@@ -13,3 +13,7 @@ export const ShipTypeSize: { [key: string]: number } = {
   PatrolBoat: 2,
   SubMarine: 3,
 };
+
+export const ShipTypeArray = Object.keys(ShipType).filter((k) =>
+  isNaN(parseInt(k)),
+);

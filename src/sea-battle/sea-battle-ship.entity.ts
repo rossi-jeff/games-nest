@@ -1,12 +1,12 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
-import { Navy } from '../global/enum/navy.enum';
-import { ShipType } from '../global/enum/ship-type.enum';
+import { Navy, NavyArray } from '../global/enum/navy.enum';
+import { ShipType, ShipTypeArray } from '../global/enum/ship-type.enum';
 import { SeaBattleShipGridPoint } from './sea-battle-ship-grid-point.entity';
 import { SeaBattleShipHit } from './sea-battle-ship-hit.entity';
 import { SeaBattle } from './sea-battle.entity';
 
-@Entity()
+@Entity('sea_battle_ships')
 export class SeaBattleShip extends BaseModel {
   @Column({ type: 'enum', enum: ShipType })
   Type: ShipType;
@@ -32,4 +32,12 @@ export class SeaBattleShip extends BaseModel {
 
   @OneToMany((type) => SeaBattleShipHit, (gwg) => gwg.sea_battle_ship)
   hits: SeaBattleShipHit[];
+
+  toJSON() {
+    return {
+      ...this,
+      Navy: NavyArray[this.Navy],
+      Type: ShipTypeArray[this.Type],
+    };
+  }
 }

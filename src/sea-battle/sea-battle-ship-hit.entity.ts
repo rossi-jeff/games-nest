@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
 import { SeaBattleShip } from './sea-battle-ship.entity';
 
-@Entity()
+@Entity('sea_battle_ship_hits')
 export class SeaBattleShipHit extends BaseModel {
   @Column()
   Horizontal: string;
