@@ -1,10 +1,10 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
-import { GameStatus } from '../global/enum/game-status.enum';
+import { GameStatus, GameStatusArray } from '../global/enum/game-status.enum';
 import { User } from '../user/user.entity';
 import { TenGrandTurn } from './ten-grand-turn.entity';
 
-@Entity()
+@Entity('ten_grands')
 export class TenGrand extends BaseModel {
   @Column({ type: 'enum', enum: GameStatus })
   Status: GameStatus;
@@ -21,4 +21,11 @@ export class TenGrand extends BaseModel {
 
   @OneToMany((type) => TenGrandTurn, (tgt) => tgt.ten_grand)
   turns: TenGrandTurn[];
+
+  toJSON() {
+    return {
+      ...this,
+      Status: GameStatusArray[this.Status],
+    };
+  }
 }

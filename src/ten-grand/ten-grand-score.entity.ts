@@ -1,9 +1,12 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { BaseModel } from '../global/base-model.abstract';
-import { TenGrandCategory } from '../global/enum/ten-grand-category.enum';
+import {
+  TenGrandCategory,
+  TenGrandCategoryArray,
+} from '../global/enum/ten-grand-category.enum';
 import { TenGrandTurn } from './ten-grand-turn.entity';
 
-@Entity()
+@Entity('ten_grand_scores')
 export class TenGrandScore extends BaseModel {
   @Column()
   Dice: string;
@@ -20,4 +23,11 @@ export class TenGrandScore extends BaseModel {
   @ManyToOne((type) => TenGrandTurn)
   @JoinColumn({ name: 'ten_grand_turn_id' })
   ten_grand_turn: TenGrandTurn;
+
+  toJSON() {
+    return {
+      ...this,
+      Category: TenGrandCategoryArray[this.Category],
+    };
+  }
 }

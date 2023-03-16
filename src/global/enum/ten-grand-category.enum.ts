@@ -25,3 +25,7 @@ export const TenGrandDiceRequired: { [key: string]: number } = {
   SixKind: 6,
   CrapOut: 0,
 };
+
+export const TenGrandCategoryArray = Object.keys(TenGrandCategory).filter((k) =>
+  isNaN(parseInt(k)),
+);

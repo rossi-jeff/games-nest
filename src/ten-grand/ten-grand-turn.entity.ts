@@ -3,7 +3,7 @@ import { BaseModel } from '../global/base-model.abstract';
 import { TenGrandScore } from './ten-grand-score.entity';
 import { TenGrand } from './ten-grand.entity';
 
-@Entity()
+@Entity('ten_grand_turns')
 export class TenGrandTurn extends BaseModel {
   @Column({ type: 'int', default: 0 })
   Score: number;
