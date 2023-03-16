@@ -3,7 +3,7 @@ import { BaseModel } from '../global/base-model.abstract';
 import { User } from '../user/user.entity';
 import { YachtTurn } from './yacht-turn.entity';
 
-@Entity()
+@Entity('yachts')
 export class Yacht extends BaseModel {
   @Column({ type: 'int', default: 0 })
   Total: number;

@@ -9,7 +9,7 @@ export default function (): TypeOrmModuleOptions {
     password: process.env.TYPEORM_PASSWORD,
     database: process.env.TYPEORM_DATABASE,
     entities: [process.env.TYPEORM_ENTITIES],
-    logging: ['error', 'query'],
+    logging: ['error'],
     synchronize: false,
   };
 }
