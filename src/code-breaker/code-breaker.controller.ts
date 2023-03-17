@@ -12,9 +12,11 @@ import { CodeBreakerGuessDto } from '../global/dto/code-breaker-guess.dto';
 import { CreateCodeBreakerDto } from '../global/dto/create-code-breaker.dto';
 import { OptionalAuthGuard } from '../global/optional-auth-guard';
 import { CodeBreakerService } from './code-breaker.service';
-import { ApiTags, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiResponse, ApiQuery } from '@nestjs/swagger';
 import { ResponseCodeBreakerDto } from '../global/response/response-code-breaker.dto';
 import { ResponseCodeBreakerGuessDto } from '../global/response/response-code-breaker-guess.dto';
+import { ResponsePaginatedCodeBreakersDto } from '../global/response/response-paginated-code-breakers.dto';
+import { PaginatedQueryDto } from '../global/dto/paginated-query.dto';
 
 @ApiTags('Code Breaker')
 @Controller('code_breaker')
@@ -22,7 +24,12 @@ export class CodeBreakerController {
   constructor(private codeBreakerService: CodeBreakerService) {}
 
   @Get()
-  @ApiResponse({ status: 200, description: 'paginated list of code breakers' })
+  @ApiResponse({
+    status: 200,
+    description: 'paginated list of code breakers',
+    type: ResponsePaginatedCodeBreakersDto,
+  })
+  @ApiQuery({ type: PaginatedQueryDto })
   async paginatedCodeBreakers(
     @Query() query: { Limit?: string; Offset?: string },
   ) {
