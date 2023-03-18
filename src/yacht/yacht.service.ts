@@ -23,6 +23,7 @@ export class YachtService {
     const where = { NumTurns: MoreThanOrEqual(12) };
     const Items = await this.yachtRepo.find({
       where,
+      order: { Total: 'DESC' },
       skip,
       take,
       relations: ['user'],

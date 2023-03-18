@@ -37,6 +37,7 @@ export class TenGrandService {
     const where = { Status: Not(GameStatus.Playing) };
     const Items = await this.tenGrandRepo.find({
       where,
+      order: { Score: 'DESC' },
       skip,
       take,
       relations: ['user'],

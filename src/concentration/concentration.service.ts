@@ -20,6 +20,7 @@ export class ConcentrationService {
     const where = { Status: Not(GameStatus.Playing) };
     const Items = await this.concentrationRepo.find({
       where,
+      order: { Moves: 'DESC' },
       skip,
       take,
       relations: ['user'],

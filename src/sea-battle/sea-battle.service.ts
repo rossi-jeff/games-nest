@@ -37,6 +37,7 @@ export class SeaBattleService {
     const where = { Status: Not(GameStatus.Playing) };
     const Items = await this.seaBattleRepo.find({
       where,
+      order: { Score: 'DESC' },
       skip,
       take,
       relations: ['user'],
