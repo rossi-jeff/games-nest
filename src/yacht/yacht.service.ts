@@ -76,7 +76,7 @@ export class YachtService {
         id: 'DESC',
       },
     });
-    if (lastTurn && lastTurn.RollThree == '') {
+    if (lastTurn && lastTurn.Category == null && lastTurn.RollThree == '') {
       if (lastTurn.RollTwo != '') {
         await this.yachtTurnRepo
           .createQueryBuilder()
