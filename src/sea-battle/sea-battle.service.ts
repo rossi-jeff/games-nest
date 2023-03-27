@@ -11,7 +11,7 @@ import { GameStatus } from '../global/enum/game-status.enum';
 import { CreateSeaBattleDto } from '../global/dto/create-sea-battle.dto';
 import { PointDto, SeaBattleShipDto } from '../global/dto/sea-battle-ship.dto';
 import { Navy } from '../global/enum/navy.enum';
-import { ShipType } from '../global/enum/ship-type.enum';
+import { ShipType, ShipTypeArray } from '../global/enum/ship-type.enum';
 import { directions, MaxAxis } from './sea-battle-functions';
 import { SeaBattleFireDto } from '../global/dto/sea-battle-fire.dto';
 import { Target } from '../global/enum/target.enum';
@@ -269,7 +269,7 @@ export class SeaBattleService {
     ship.sea_battle_id = id;
     ship.Navy = Navy.Opponent;
     ship.Size = Size;
-    ship.Type = shipType;
+    ship.Type = ShipTypeArray.indexOf(shipType.toString());
     ship.created_at = now;
     ship.updated_at = now;
     const saved = await this.seaBattleShipRepo.save(ship);
@@ -357,7 +357,7 @@ export class SeaBattleService {
     ship.sea_battle_id = id;
     ship.Navy = Navy.Player;
     ship.Size = Size;
-    ship.Type = shipType;
+    ship.Type = ShipTypeArray.indexOf(shipType.toString());
     ship.created_at = now;
     ship.updated_at = now;
     const saved = await this.seaBattleShipRepo.save(ship);
