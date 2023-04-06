@@ -55,6 +55,7 @@ export class CodeBreakerService {
           user_id,
           Status: GameStatus.Playing,
         },
+        relations: ['user'],
       });
     } else return [];
   }

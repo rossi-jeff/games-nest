@@ -39,7 +39,7 @@ export class YachtService {
           user_id,
           NumTurns: LessThan(12),
         },
-        relations: ['turns'],
+        relations: ['turns', 'user'],
       });
     } else return [];
   }
