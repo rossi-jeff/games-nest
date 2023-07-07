@@ -53,6 +53,7 @@ export class GuessWordService {
           user_id,
           Status: GameStatus.Playing,
         },
+        relations: ['user'],
       });
     } else return [];
   }

@@ -23,6 +23,7 @@ export class YachtService {
     const where = { NumTurns: MoreThanOrEqual(12) };
     const Items = await this.yachtRepo.find({
       where,
+      order: { Total: 'DESC' },
       skip,
       take,
       relations: ['user'],
@@ -38,7 +39,7 @@ export class YachtService {
           user_id,
           NumTurns: LessThan(12),
         },
-        relations: ['turns'],
+        relations: ['turns', 'user'],
       });
     } else return [];
   }
@@ -75,7 +76,7 @@ export class YachtService {
         id: 'DESC',
       },
     });
-    if (lastTurn && lastTurn.RollThree == '') {
+    if (lastTurn && lastTurn.Category == null && lastTurn.RollThree == '') {
       if (lastTurn.RollTwo != '') {
         await this.yachtTurnRepo
           .createQueryBuilder()

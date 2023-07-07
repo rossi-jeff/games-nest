@@ -37,6 +37,7 @@ export class TenGrandService {
     const where = { Status: Not(GameStatus.Playing) };
     const Items = await this.tenGrandRepo.find({
       where,
+      order: { Score: 'DESC' },
       skip,
       take,
       relations: ['user'],
@@ -155,10 +156,11 @@ export class TenGrandService {
     for (const turn of turns) {
       Score += turn.Score || 0;
     }
+    const Status = Score >= 10000 ? GameStatus.Won : GameStatus.Playing;
     await this.tenGrandRepo
       .createQueryBuilder()
       .update(TenGrand)
-      .set({ Score })
+      .set({ Score, Status })
       .where('id = :id', { id })
       .execute();
   }

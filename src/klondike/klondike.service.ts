@@ -19,6 +19,7 @@ export class KlondikeService {
     const where = { Status: Not(GameStatus.Playing) };
     const Items = await this.klondikeRepo.find({
       where,
+      order: { Status: 'DESC', Moves: 'ASC' },
       skip,
       take,
       relations: ['user'],

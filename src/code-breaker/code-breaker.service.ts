@@ -39,6 +39,7 @@ export class CodeBreakerService {
     const where = { Status: Not(GameStatus.Playing) };
     const Items = await this.codeBreakerRepo.find({
       where,
+      order: { Score: 'DESC' },
       skip,
       take,
       relations: ['user'],
@@ -54,6 +55,7 @@ export class CodeBreakerService {
           user_id,
           Status: GameStatus.Playing,
         },
+        relations: ['user'],
       });
     } else return [];
   }
