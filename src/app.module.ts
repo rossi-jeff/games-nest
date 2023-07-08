@@ -13,6 +13,7 @@ import { YachtModule } from './yacht/yacht.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { PokerSquareModule } from './poker-square/poker-square.module';
 import DatabaseConfig from './database.config';
 
 @Module({
@@ -31,6 +32,7 @@ import DatabaseConfig from './database.config';
     TenGrandModule,
     YachtModule,
     AuthModule,
+    PokerSquareModule,
   ],
 })
 export class AppModule {}
