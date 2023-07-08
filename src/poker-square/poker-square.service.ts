@@ -40,6 +40,7 @@ export class PokerSquareService {
     const poker_square = new PokerSquare();
     const now = new Date().toISOString();
     poker_square.user_id = user_id || null;
+    poker_square.Status = GameStatus.Playing;
     poker_square.created_at = now;
     poker_square.updated_at = now;
     const saved = await this.pokerSquareRepo.save(poker_square);
