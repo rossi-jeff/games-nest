@@ -14,6 +14,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { PokerSquareModule } from './poker-square/poker-square.module';
+import { SpiderModule } from './spider/spider.module';
 import DatabaseConfig from './database.config';
 
 @Module({
@@ -33,6 +34,7 @@ import DatabaseConfig from './database.config';
     YachtModule,
     AuthModule,
     PokerSquareModule,
+    SpiderModule,
   ],
 })
 export class AppModule {}
