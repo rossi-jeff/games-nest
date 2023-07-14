@@ -16,6 +16,7 @@ import { responsePaginatedSpiderDto } from '../global/response/response-paginate
 import { PaginatedQueryDto } from '../global/dto/paginated-query.dto';
 import { ResponseSpiderDto } from '../global/response/response-spider.dto';
 import { OptionalAuthGuard } from '../global/optional-auth-guard';
+import { CreateSpiderDto } from '../global/dto/create-spider.dto';
 
 @ApiTags('Spider')
 @Controller('spider')
@@ -50,8 +51,8 @@ export class SpiderController {
     description: 'spider',
     type: ResponseSpiderDto,
   })
-  async createSpider(@Req() req: any) {
-    return await this.spiderService.createSpider(req.user.id);
+  async createSpider(@Body() dto: CreateSpiderDto, @Req() req: any) {
+    return await this.spiderService.createSpider(dto, req.user.id);
   }
 
   @Patch(':id')

@@ -5,6 +5,7 @@ import { Not, Repository } from 'typeorm';
 import { defaultLimit, defaultOffset } from '../global/constants';
 import { GameStatus, GameStatusArray } from '../global/enum/game-status.enum';
 import { UpdateSpiderDto } from '../global/dto/update-spider.dto';
+import { CreateSpiderDto } from '../global/dto/create-spider.dto';
 
 @Injectable()
 export class SpiderService {
@@ -35,9 +36,11 @@ export class SpiderService {
     });
   }
 
-  async createSpider(user_id?: number) {
+  async createSpider(dto: CreateSpiderDto, user_id?: number) {
+    const { Suits } = dto;
     const spider = new Spider();
     const now = new Date().toISOString();
+    spider.Suits = Suits;
     spider.user_id = user_id || null;
     spider.created_at = now;
     spider.updated_at = now;

@@ -14,6 +14,9 @@ export class Spider extends BaseModel {
   @Column({ type: 'int', default: 0 })
   Elapsed: number;
 
+  @Column({ type: 'int', default: 4 })
+  Suits: number;
+
   @Column({ type: 'bigint', nullable: true })
   user_id: number;
 
